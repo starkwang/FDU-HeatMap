@@ -1,0 +1,10 @@
+html,body{
+    height: 100%;
+}
+#main{
+    height: 100%;
+    width: 100%;
+    background: url('../img/fdumap.png');
+    background-size: auto;
+    background-repeat: no-repeat;
+}

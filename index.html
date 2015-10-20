@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <title>ECharts</title>
+  <link rel="stylesheet" type="text/css" href="./style/index.css">
+</head>
+
+<body>
+  <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+  <div id="main"></div>
+  <!-- ECharts单文件引入 -->
+  <script src="./js/echarts-all.js"></script>
+  <script type="text/javascript">
+  // 使用
+
+  // 基于准备好的dom，初始化echarts图表
+
+  var heatData = [];
+  for (var i = 0; i < 100; ++i) {
+      heatData.push([
+        400 + Math.random() * 300,
+        300 + Math.random() * 50,
+        Math.random()
+      ]);
+    }
+    for (var i = 0; i < 100; ++i) {
+      heatData.push([
+        100 + Math.random() * 600,
+        150 + Math.random() * 100,
+        Math.random()
+      ]);
+    }
+
+
+  function render(argument) {
+    var myChart = echarts.init(document.getElementById('main'));
+
+    for (var i = 0; i < 1; ++i) {
+      heatData.push([
+        400 + Math.random() * 300,
+        300 + Math.random() * 50,
+        Math.random()
+      ]);
+    }
+    for (var i = 0; i < 1; ++i) {
+      heatData.push([
+        100 + Math.random() * 600,
+        150 + Math.random() * 100,
+        Math.random()
+      ]);
+    }
+    for (var i = 0; i < 5; ++i) {
+      heatData.push([
+        Math.random() * 840,
+        Math.random() * 684,
+        Math.random() * 0.5
+      ]);
+    }
+    heatData.splice(Math.floor(Math.random()*10),7);
+
+    option = {
+      title: {
+        text: '热力图自定义样式'
+      },
+      series: [{
+        type: 'heatmap',
+        data: heatData,
+        hoverable: false,
+        gradientColors: [{
+          offset: 0.4,
+          color: 'green'
+        }, {
+          offset: 0.5,
+          color: 'yellow'
+        }, {
+          offset: 0.8,
+          color: 'orange'
+        }, {
+          offset: 1,
+          color: 'red'
+        }],
+        minAlpha: 0.1,
+        valueScale: 1,
+        opacity: 0.8
+      }]
+    };
+
+
+    // 为echarts对象加载数据 
+    myChart.setOption(option);
+  }
+
+  setInterval(function() {
+    render();
+  }, 1000);
+  </script>
+</body>
